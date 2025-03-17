@@ -1,17 +1,14 @@
 <!-- Footer Start -->
-<footer>
+<footer class="footer">
     <!-- Footer Container Start -->
-    <section>
+    <section class="container">
 
         <!-- Column Start -->
         <div>
-            <h4>
-                Hibs
-                <span>
-                    DOT<strong>NET</strong>
-                </span>
-            </h4>
-            <p>
+            <!-- Logo Start -->
+            <?php include(__DIR__ . "/../components/logo.php"); ?>
+            <!-- Logo End -->
+            <p class="text">
                 Hibs.net is a fan run forum that allows fans of Hibernian FC to engage in discussions, wherever they are.
             </p>
         </div>
@@ -22,22 +19,22 @@
             <!-- Useful Links Start -->
             <ul>
                 <li>
-                    <a href="#">Home</a>
+                    <a href="<?php echo $baseUrl; ?>/index.php">Home</a>
                 </li>
                 <li>
-                    <a href="#">Forum</a>
+                    <a href="<?php echo $baseUrl; ?>/forum.php">Forum</a>
                 </li>
                 <li>
-                    <a href="#">Register</a>
+                    <a href="<?php echo $baseUrl; ?>/register.php">Register</a>
                 </li>
                 <li>
-                    <a href="#">Login</a>
+                    <a href="<?php echo $baseUrl; ?>/login.php">Login</a>
                 </li>
                 <li>
-                    <a href="#">Hibernian FC</a>
+                    <a href="https://www.hibernianfc.co.uk/" target="_blank">Hibernian FC</a>
                 </li>
                 <li>
-                    <a href="#">Ticketing Website</a>
+                    <a href="https://www.eticketing.co.uk/hibernianfc/" target="_blank">Ticketing Website</a>
                 </li>
             </ul>
             <!-- Useful Links End -->
@@ -63,8 +60,11 @@
         <!-- Column End -->
 
         <!-- Column Start -->
-        <div>
+        <div class="socials">
             <!-- Social Media Icons Start -->
+            <i class="ri-facebook-circle-line"></i>
+            <i class="ri-twitter-x-line"></i>
+            <i class="ri-instagram-line"></i>
             <!-- Social Media Icons End -->
         </div>
         <!-- Column End -->
@@ -75,7 +75,7 @@
 </footer>
 <!-- Footer End -->
 
-<body>
+
 
 </body>
 

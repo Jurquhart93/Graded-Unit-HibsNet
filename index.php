@@ -1,33 +1,94 @@
+<!-- Inlcuding Database Files Start -->
 <?php include_once(__DIR__ . '/database/conn.php'); ?>
+<!-- Inlcuding Database Files End -->
+
+<!-- Setting Page Title Start -->
+<?php $pageTitle = "Home"; ?>
+<!-- Setting Page Title Start -->
 
 <!-- Including Header Start -->
-<?php include_once("./partials/header.php"); ?>
+<?php include_once(__DIR__ . "/partials/header.php"); ?>
 <!-- Including Header End -->
 
 <!-- Main Content Start -->
-<main>
-    <!-- <div id="scoreaxis-widget-08006"><iframe id="Iframe"
-            src="https://www.scoreaxis.com/widget/standings-widget/501?autoHeight=1&amp;groupNum=undefined&amp;font=0&amp;links=1&amp;fontSize=18&amp;teamsLogo=0&amp;widgetHomeAwayTabs=1&amp;removeBorders=1&amp;header=0&amp;inst=08006"
-            style="width:100%;border:none;transition:all 300ms ease"></iframe>
-        <script>window.addEventListener("DOMContentLoaded", event => { window.addEventListener("message", event => { if (event.data.appHeight && "08006" == event.data.inst) { let container = document.querySelector("#scoreaxis-widget-08006 iframe"); container && (container.style.height = parseInt(event.data.appHeight) + "px") } }, !1) });</script>
-    </div>
-    <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left;">Data provided by <a target="_blank"
-            href="https://www.scoreaxis.com/">Scoreaxis</a></div>
+<main class="main">
+    <section class="landing-image">
+        <div class="container">
+            <!-- Upcoming Match Start -->
+            <div id="fs-upcoming"><!-- Dynamically Generated Upcoming Match Day --></div>
+            <!-- Upcoming Match End -->
+        </div>
+    </section>
 
+    <!-- Recent Forum Activity Start -->
+    <section class="container">
+        <h1 class="title title--h1">Recent Forum Activity</h1>
 
+        <!-- Including Post(s) Start -->
+        <?php include("./components/post.php"); ?>
+        <?php include("./components/post.php"); ?>
+        <!-- Including Post(s) End -->
+    </section>
+    <!-- Recent Forum Activity End -->
 
-    <div id="scoreaxis-widget-c4d7c"
-        style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%">
-        <iframe id="Iframe"
-            src="https://www.scoreaxis.com/widget/team-info/66?autoHeight=1&amp;fontSize=18&amp;font=0&amp;inst=c4d7c"
-            style="width:100%;border:none;transition:all 300ms ease"></iframe>
-        <script>window.addEventListener("DOMContentLoaded", event => { window.addEventListener("message", event => { if (event.data.appHeight && "c4d7c" == event.data.inst) { let container = document.querySelector("#scoreaxis-widget-c4d7c iframe"); container && (container.style.height = parseInt(event.data.appHeight) + "px") } }, !1) });</script>
-    </div>
-    <div style="font-size: 12px; font-family: Arial, sans-serif; text-align: left;">Team data by <a target="_blank"
-            href="https://www.scoreaxis.com/">Scoreaxis</a></div> -->
+    <!-- Hibernian Widgets Start -->
+    <section class="widgets container">
+        <!-- Hibernian Stats Widget Start -->
+        <div>
+            <h2 class="title title--h2">Hibernian Stats</h2>
+
+            <!-- Hibernian Stats Start -->
+            <iframe src="https://footystats.org/api/club?id=1017" height="100%" width="100%" style="height:420px; width:100%;" frameborder="0" class="fs-embed-wrapper"></iframe>
+            <!-- Hibernian Stats End -->
+        </div>
+        <!-- Hibernian Stats Widget End -->
+
+        <!-- League Table Start -->
+        <div>
+            <h3 class="title title--h2">League Table</h3>
+
+            <!-- SPFL League Table Widget Start -->
+            <div id="fs-standings"><!-- Dynamically Generated League Table --></div>
+            <!-- SPFL League Table Widget End -->
+        </div>
+        <!-- League Table End -->
+    </section>
+    <!-- Hibernian Widgets End -->
 </main>
 <!-- Main Content End -->
 
+<script>
+    (function(w, d, s, o, f, js, fjs) {
+        w['fsUpcomingEmbed'] = o;
+        w[o] = w[o] || function() {
+            (w[o].q = w[o].q || []).push(arguments)
+        };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o;
+        js.src = f;
+        js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'fsUpcoming', 'https://cdn.footystats.org/embeds/upcoming.js'));
+    fsUpcoming('params', {
+        teamID: 1017
+    });
+
+    (function(w, d, s, o, f, js, fjs) {
+        w['fsStandingsEmbed'] = o;
+        w[o] = w[o] || function() {
+            (w[o].q = w[o].q || []).push(arguments)
+        };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o;
+        js.src = f;
+        js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js'));
+    mw('params', {
+        leagueID: 12455
+    });
+</script>
+
 <!-- Including Footer Start -->
-<?php include_once("./partials/footer.php"); ?>
+<?php include_once(__DIR__ . "/partials/footer.php"); ?>
 <!-- Including Footer End -->
