@@ -1,6 +1,12 @@
-<!-- Inlcuding Database Files Start -->
-<?php include_once(__DIR__ . '/database/conn.php'); ?>
-<!-- Inlcuding Database Files End -->
+<!-- Inlcuding Session and DB Files Start -->
+<?php include_once(__DIR__ . '/includes.php'); ?>
+<!-- Inlcuding Session and DB Files End -->
+
+<?php
+$postId = $_GET['id'];
+$post = GetPostById($conn, $postId);
+$replies = GetReplies($conn, $postId);
+?>
 
 <!-- Setting Page Title Start -->
 <?php $pageTitle = "Post"; ?>
@@ -14,37 +20,32 @@
 <main class="main">
     <!-- Thread Start -->
     <section class="thread container">
-        <!-- Including Post(s) Start -->
-        <?php include("./components/post.php"); ?>
-        <!-- Including Post(s) End -->
+        <section class="post">
+            <?php $postName = $post['post_name']; ?>
+            <!-- Including Post Start -->
+            <?php include_once(__DIR__ . "/components/post-header.php"); ?>
+            <?php include_once(__DIR__ . "/components/post-container.php"); ?>
+            <!-- Including Post End -->
+        </section>
 
-        <!-- Reply Start -->
-        <div class="reply">
-            <div class="reply__header">
-                <div>
-                    Reply by: <a href="#">Authors Names</a>
-                    <span>&sdot; 12 hours ago</span>
-                </div>
+        <!-- Checking If Replies Is Not Empty Start -->
+        <?php if (!empty($replies)) { ?>
+            <?php foreach ($replies as $reply) { ?>
+                <!-- Including Reply Start -->
+                <?php include(__DIR__ . "/components/reply.php"); ?>
+                <!-- Including Reply End -->
+            <?php } ?>
+        <?php } ?>
+        <!-- Checking If Replies Is Not Empty End -->
 
-                <!-- More Icon Start -->
-                <i class="ri-more-2-line"></i>
-                <!-- More Icon End -->
-            </div>
+        <!-- Checking If User Is Logged In Start -->
+        <?php if (isset($_SESSION['user'])) { ?>
 
-            <p class="reply__body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Asperiores ab cupiditate vitae optio maxime distinctio dolorum
-                corrupti quisquam harum, aspernatur, hic et doloribus debitis,
-                minus quos ipsam sunt facilis. Aliquid blanditiis alias magnam
-                ad vel error nostrum eaque!
-            </p>
-
-            <div class="reply__footer">
-                <a href="#">View 3 Replies</a>
-                <i class="ri-corner-right-down-line"></i>
-            </div>
-        </div>
-        <!-- Reply End -->
+            <!-- Including Reply Form Start -->
+            <a href="<?php echo $baseUrl; ?>/components/post-form.php?post_id=<?php echo $postId; ?>&post_name=post-reply">Post</a>
+            <!-- Including Reply Form End -->
+        <?php } ?>
+        <!-- Checking If User Is Logged In End -->
     </section>
     <!-- Thread End -->
 </main>

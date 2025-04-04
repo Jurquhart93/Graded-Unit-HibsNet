@@ -3,29 +3,18 @@
 <!-- Inlcuding Session and DB Files End -->
 
 <!-- Setting Page Title Start -->
-<?php $pageTitle = "Forum"; ?>
+<?php $pageTitle = "404"; ?>
 <!-- Setting Page Title Start -->
 
 <!-- Including Header Start -->
 <?php include_once(__DIR__ . "/partials/header.php"); ?>
 <!-- Including Header End -->
 
-<!-- Main Content Start -->
 <main class="main">
-    <!-- Forum Content Start -->
-    <section class="forum container">
-        <h1 class="title title--h1">Forum Categories</h1>
-
-        <section class="categories">
-            <!-- Including Categories Start -->
-            <?php include("./components/category.php") ?>
-            <!-- Including Categories End -->
-        </section>
+    <section class="container">
+        <h1>Access Denied.</h1>
     </section>
-    <!-- Forum Content End -->
-
 </main>
-<!-- Main Content End -->
 
 <!-- Including Footer Start -->
 <?php include_once(__DIR__ . "/partials/footer.php"); ?>

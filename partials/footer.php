@@ -1,3 +1,7 @@
+<!-- Scripts Start -->
+<script src="<?php echo $baseUrl; ?>/js/scripts.js"></script>
+<!-- Scripts End -->
+
 <!-- Footer Start -->
 <footer class="footer">
     <!-- Footer Container Start -->

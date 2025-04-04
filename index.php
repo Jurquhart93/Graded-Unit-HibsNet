@@ -1,6 +1,10 @@
-<!-- Inlcuding Database Files Start -->
-<?php include_once(__DIR__ . '/database/conn.php'); ?>
-<!-- Inlcuding Database Files End -->
+<!-- Inlcuding Session and DB Files Start -->
+<?php include_once(__DIR__ . '/includes.php'); ?>
+<!-- Inlcuding Session and DB Files End -->
+
+<?php
+$latestPosts = GetLatestPosts($conn);
+?>
 
 <!-- Setting Page Title Start -->
 <?php $pageTitle = "Home"; ?>
@@ -24,10 +28,15 @@
     <section class="container">
         <h1 class="title title--h1">Recent Forum Activity</h1>
 
-        <!-- Including Post(s) Start -->
-        <?php include("./components/post.php"); ?>
-        <?php include("./components/post.php"); ?>
-        <!-- Including Post(s) End -->
+        <?php foreach ($latestPosts as $post) { ?>
+            <section class="post">
+                <?php $postName = $post['post_name']; ?>
+                <!-- Including Post(s) Start -->
+                <?php include("./components/post-header.php"); ?>
+                <?php include("./components/post-container.php"); ?>
+                <!-- Including Post(s) End -->
+            </section>
+        <?php } ?>
     </section>
     <!-- Recent Forum Activity End -->
 
