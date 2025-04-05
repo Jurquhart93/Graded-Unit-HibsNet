@@ -30,13 +30,17 @@ $latestPosts = GetLatestPosts($conn);
 
         <?php foreach ($latestPosts as $post) { ?>
             <section class="post">
-                <?php $postName = $post['post_name']; ?>
-                <!-- Including Post(s) Start -->
+                <?php
+                $postName = $post['post_name'];
+                $username = $post['username'];
+                ?>
+
                 <?php require("./components/post/breadcrum.php"); ?>
                 <?php require("./components/post/name.php"); ?>
-                <?php require("./components/post/content.php"); ?>
-                <?php require("./components/post/author.php"); ?>
-                <!-- Including Post(s) End -->
+                <div class="post__wrapper">
+                    <?php require("./components/post/content.php"); ?>
+                    <?php require("./components/post/author.php"); ?>
+                </div>
             </section>
         <?php } ?>
     </section>

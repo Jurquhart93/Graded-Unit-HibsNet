@@ -2,12 +2,11 @@
 
 <!-- Reply Start -->
 <div class="post reply">
-    <?php echo $reply['reply_content']; ?>
-
-    <p class="author">
-        Reply by: <a href="#"><?php echo $reply['username']; ?></a>
-        <span>&sdot; <?php echo CreatedAt($reply['created_at']); ?></span>
-    </p>
+    <div class="post__wrapper">
+        <?php $username = $reply['username']; ?>
+        <?php echo $reply['reply_content']; ?>
+        <?php require(__DIR__ . "/post/author.php"); ?>
+    </div>
 
     <?php if (!empty($subReplies)) { ?>
         <a class="view-reply"><span>View Replies</span> <i class="ri-corner-right-down-line"></i></a>
@@ -17,12 +16,12 @@
 
     <div class="sub-reply">
         <?php foreach ($subReplies as $subReply) { ?>
-            <?php echo $subReply['sub_reply_content']; ?>
+            <div class="post__wrapper sub-reply__post">
 
-            <p class="author">
-                Reply by: <a href="#"><?php echo $subReply['username']; ?></a>
-                <span>&sdot; <?php echo CreatedAt($subReply['created_at']); ?></span>
-            </p>
+                <?php $username = $subReply['username']; ?>
+                <?php echo $subReply['sub_reply_content']; ?>
+                <?php require(__DIR__ . "/post/author.php"); ?>
+            </div>
         <?php } ?>
 
         <?php if (isset($_SESSION['user'])) { ?>

@@ -22,10 +22,17 @@ $replies = GetReplies($conn, $postId);
     <section class="thread container">
         <!-- Post Start -->
         <section class="post">
-            <?php $postName = $post['post_name']; ?>
-            <?php include_once(__DIR__ . "/components/post/breadcrum.php"); ?>
-            <?php include_once(__DIR__ . "/components/post/content.php"); ?>
-            <?php include_once(__DIR__ . "/components/post/author.php"); ?>
+            <?php
+            $postName = $post['post_name'];
+            $username = $post['username'];
+            ?>
+
+            <?php require(__DIR__ . "/components/post/breadcrum.php"); ?>
+            <?php require(__DIR__ . "/components/post/name.php"); ?>
+            <div class="post__wrapper">
+                <?php require(__DIR__ . "/components/post/content.php"); ?>
+                <?php require(__DIR__ . "/components/post/author.php"); ?>
+            </div>
         </section>
         <!-- Post End -->
 

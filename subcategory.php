@@ -51,7 +51,6 @@ $posts = GetPosts($conn, $categoryId, $subcategoryId);
             <section class="post">
                 <?php $postName = $post['post_name']; ?>
                 <?php require("./components/post/name.php"); ?>
-                <?php require("./components/post/author.php"); ?>
             </section>
             <!-- Including Post(s) End -->
         <?php } ?>

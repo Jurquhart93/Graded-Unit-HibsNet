@@ -227,13 +227,13 @@ a {
   background-color: var(--clr-white);
   margin-bottom: var(--pd-small);
 }
-.post > div,
-.reply > div {
-  padding: var(--pd-small);
-}
 .post:not(:last-child),
 .reply:not(:last-child) {
   margin-bottom: var(--pd-small);
+}
+.post__wrapper,
+.reply__wrapper {
+  padding: var(--pd-small);
 }
 .post__breadcrum,
 .reply__breadcrum {
@@ -243,6 +243,7 @@ a {
   color: var(--clr-white);
   background-color: var(--clr-primary--dark);
   border-bottom: 1px solid var(--clr-white);
+  padding: var(--pd-small);
 }
 .post__breadcrum .breadcrum > a,
 .reply__breadcrum .breadcrum > a {
@@ -272,16 +273,32 @@ a {
 }
 .post .author,
 .reply .author {
-  font-size: calc(var(--fs) * 0.75);
-  text-align: right;
-  padding: 3px var(--pd-small);
-  border-top: 2px solid var(--clr-accent);
-  background-color: var(--clr-primary--light);
+  text-align: left;
+  font-size: calc(var(--fs) * 1);
+  background-color: var(--clr-white);
+  padding-top: calc(var(--pd-small) * 0.75);
+  margin-top: var(--pd-small);
+  margin-left: auto;
+  border-top: 1px solid var(--clr-primary);
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+.post .author > i,
+.reply .author > i {
+  font-size: calc(var(--fs) * 1.25);
+  margin-right: 6px;
+}
+.post .author > span,
+.reply .author > span {
+  margin-left: 6px;
 }
 .post .view-reply,
 .reply .view-reply {
   display: flex;
   align-items: center;
+  justify-content: end;
   color: var(--clr-white);
   background-color: var(--clr-primary--dark);
   font-size: var(--fs);
@@ -297,16 +314,18 @@ a {
   display: none;
   padding-bottom: 0;
 }
-.post .sub-reply > .ql-editor,
-.reply .sub-reply > .ql-editor {
-  border: 2px solid var(--clr-accent);
-  border-bottom: none;
-  padding: var(--pd-small);
+.post .sub-reply__post,
+.reply .sub-reply__post {
+  position: relative;
+  padding-bottom: var(--pd-small);
+  padding-left: var(--pd-small);
+  border-left: 2px solid var(--clr-accent);
+  margin-left: var(--pd-small);
 }
-.post .sub-reply > .author,
-.reply .sub-reply > .author {
-  border: 2px solid var(--clr-accent);
+.post .sub-reply__post:not(:last-child),
+.reply .sub-reply__post:not(:last-child) {
   margin-bottom: var(--pd-small);
+  border-bottom: 2px solid var(--clr-accent);
 }
 
 .widgets div:not(:last-child) {
@@ -706,7 +725,7 @@ html body .fs-embed-header html body .fs-header-actions {
   right: 10px;
 }
 html body .fs-embed-header .fs-header-actions .fs-header-actions-label {
-  font-size: calc(var(--fs) * 0.75);
+  font-size: calc(var(--fs) * 1);
   text-transform: uppercase;
   font-weight: 500;
   margin-bottom: 4px;
