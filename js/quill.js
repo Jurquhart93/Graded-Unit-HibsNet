@@ -20,6 +20,4 @@ document.querySelector('#link-button').addEventListener('click', () => {
     quill.format('link', value || false); // Remove link if value is empty
 });
 
-const quill = new Quill('#editor', {
-    formats: ['bold', 'italic', 'underline', 'link'],
-});
+const quill = new Quill('#editor');

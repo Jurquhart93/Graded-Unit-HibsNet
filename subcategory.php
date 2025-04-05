@@ -28,7 +28,9 @@ $posts = GetPosts($conn, $categoryId, $subcategoryId);
     <!-- Subcategory Start -->
     <section class="subcategory container">
 
-        <a href="<?php echo $baseUrl; ?>/components/post-form.php?subcategory_id=<?php echo $subcategoryId; ?>&post_name=post">Post</a>
+        <?php if (isset($_SESSION['user'])) { ?>
+            <a class="button button__post" href="<?php echo $baseUrl; ?>/components/post-form.php?subcategory_id=<?php echo $subcategoryId; ?>&post_name=post">Create a New Thread</a>
+        <?php } ?>
 
         <!-- Subcategory Header Start -->
         <div class="subcategory__header">
@@ -48,7 +50,8 @@ $posts = GetPosts($conn, $categoryId, $subcategoryId);
             <!-- Including Post(s) Start -->
             <section class="post">
                 <?php $postName = $post['post_name']; ?>
-                <?php include("./components/post-container.php"); ?>
+                <?php require("./components/post/name.php"); ?>
+                <?php require("./components/post/author.php"); ?>
             </section>
             <!-- Including Post(s) End -->
         <?php } ?>

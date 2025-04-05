@@ -1,23 +1,27 @@
-const replyContainer = document.querySelectorAll(".reply");
+document.addEventListener("DOMContentLoaded", function () {
+    const replyContainers = document.querySelectorAll('.reply');
 
-replyContainer.forEach((reply) => {
-    const viewReplies = reply.querySelector(".reply__footer .view-reply");
-    const subReplies = reply.querySelector(".sub-reply");
-    const viewRepliesInnerHtml = viewReplies.innerHTML;
+    replyContainers.forEach((el) => {
+        const btn = el.querySelector(".view-reply");
+        // const btnSpan = btn.querySelector("span");
+        const btnInnerHtml = btn.innerHTML;
 
-    viewReplies.addEventListener("click", () => {
-        console.log("Clicked");
-        if (subReplies.style.display === "block") {
-            subReplies.style.display = "none";
-            if (viewRepliesInnerHtml === "Reply") {
-                viewReplies.innerHTML = "Reply";
+        const subReply = el.querySelector(".sub-reply");
+
+        btn.addEventListener("click", () => {
+            if (subReply.style.display === "block") {
+                subReply.style.display = "none";
+
+                if (btnInnerHtml === `<span>Reply</span> <i class="ri-corner-right-down-line">`) {
+                    btn.innerHTML = `<span>Reply</span> <i class="ri-corner-right-down-line">`;
+                } else {
+                    btn.innerHTML = `<span>View Replies</span> <i class="ri-corner-right-down-line">`;
+                }
+
             } else {
-                viewReplies.innerHTML = "View Replies";
+                subReply.style.display = "block";
+                btn.innerHTML = `<span>Close</span> <i class="ri-corner-right-up-fill"></i>`;
             }
-        } else {
-            subReplies.style.display = "block";
-            viewReplies.innerHTML = "Close";
-        }
+        });
     });
 });
-

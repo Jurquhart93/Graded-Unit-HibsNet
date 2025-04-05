@@ -20,32 +20,26 @@ $replies = GetReplies($conn, $postId);
 <main class="main">
     <!-- Thread Start -->
     <section class="thread container">
+        <!-- Post Start -->
         <section class="post">
             <?php $postName = $post['post_name']; ?>
-            <!-- Including Post Start -->
-            <?php include_once(__DIR__ . "/components/post-header.php"); ?>
-            <?php include_once(__DIR__ . "/components/post-container.php"); ?>
-            <!-- Including Post End -->
+            <?php include_once(__DIR__ . "/components/post/breadcrum.php"); ?>
+            <?php include_once(__DIR__ . "/components/post/content.php"); ?>
+            <?php include_once(__DIR__ . "/components/post/author.php"); ?>
         </section>
+        <!-- Post End -->
 
-        <!-- Checking If Replies Is Not Empty Start -->
-        <?php if (!empty($replies)) { ?>
-            <?php foreach ($replies as $reply) { ?>
-                <!-- Including Reply Start -->
-                <?php include(__DIR__ . "/components/reply.php"); ?>
-                <!-- Including Reply End -->
-            <?php } ?>
-        <?php } ?>
-        <!-- Checking If Replies Is Not Empty End -->
-
-        <!-- Checking If User Is Logged In Start -->
+        <!-- If User is Logged In Then Show Button Start -->
         <?php if (isset($_SESSION['user'])) { ?>
-
-            <!-- Including Reply Form Start -->
-            <a href="<?php echo $baseUrl; ?>/components/post-form.php?post_id=<?php echo $postId; ?>&post_name=post-reply">Post</a>
-            <!-- Including Reply Form End -->
+            <a class="button--margin button__post" href="<?php echo $baseUrl; ?>/components/post-form.php?post_id=<?php echo $postId; ?>&post_name=post-reply">Add a Reply</a>
         <?php } ?>
-        <!-- Checking If User Is Logged In End -->
+        <!-- If User is Logged In Then Show Button End -->
+
+        <!-- Include Each Reply Start -->
+        <?php foreach ($replies as $reply) { ?>
+            <?php include(__DIR__ . "/components/reply.php"); ?>
+        <?php } ?>
+        <!-- Include Each Reply End -->
     </section>
     <!-- Thread End -->
 </main>

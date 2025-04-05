@@ -32,8 +32,10 @@ $latestPosts = GetLatestPosts($conn);
             <section class="post">
                 <?php $postName = $post['post_name']; ?>
                 <!-- Including Post(s) Start -->
-                <?php include("./components/post-header.php"); ?>
-                <?php include("./components/post-container.php"); ?>
+                <?php require("./components/post/breadcrum.php"); ?>
+                <?php require("./components/post/name.php"); ?>
+                <?php require("./components/post/content.php"); ?>
+                <?php require("./components/post/author.php"); ?>
                 <!-- Including Post(s) End -->
             </section>
         <?php } ?>

@@ -71,14 +71,14 @@ if (isset($_SESSION['user'])) {
                 </div>
             <?php } ?>
 
-            <div id="tooltip-controls">
+            <div class="form__buttons" id="tooltip-controls">
                 <a id="bold-button"><i class="ri-bold"></i></a>
                 <a id="italic-button"><i class="ri-italic"></i></a>
                 <a id="underline-button"><i class="ri-underline"></i></a>
                 <a id="link-button"><i class="ri-link"></i></a>
             </div>
 
-            <div id="editor"></div>
+            <div class="form__editor" id="editor"></div>
 
             <div class="form__field">
                 <label style="display: none;" for="post-content" class="form__label">Post Content:</label>
