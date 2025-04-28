@@ -1,6 +1,12 @@
+<!-- jQuery Script Start -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- jQuery Script End -->
+
 <!-- Scripts Start -->
 <script src="<?php echo $baseUrl; ?>/js/scripts.js"></script>
 <!-- Scripts End -->
+
+
 
 <!-- Footer Start -->
 <footer class="footer">

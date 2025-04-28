@@ -6,7 +6,5 @@
     </div>
     <!-- Breadcrum Menu End -->
 
-    <!-- More Icon Start -->
-    <i class="ri-more-2-line"></i>
-    <!-- More Icon End -->
+
 </div>

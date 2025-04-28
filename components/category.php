@@ -1,6 +1,6 @@
 <!-- PHP To Retrieve The Categories and SubCategories Start -->
 <?php
-$categories = GetCategories($conn);
+$categories = PreparedSelectStmt($conn, "SELECT * FROM gu_categories");
 ?>
 <!-- PHP To Retrieve The Categories and SubCategories End -->
 
@@ -9,7 +9,7 @@ $categories = GetCategories($conn);
 
     <?php
 
-    $subCategories = GetSubcategories($conn, $category['id'])
+    $subCategories = PreparedSelectStmt($conn, "SELECT * FROM gu_subcategories WHERE category_id = ?", "i", [$category['id']]);
 
     ?>
 
@@ -23,14 +23,30 @@ $categories = GetCategories($conn);
 
         <!-- Category Options Start -->
         <?php foreach ($subCategories as $subCategory) { ?>
-            <div class="category__options">
-                <!-- Category Option Start -->
-                <div class="category__option">
-                    <i class="ri-corner-down-right-line"></i>
-                    <a href="<?php echo $baseUrl ?>/subcategory.php?subcategory_id=<?php echo $subCategory['id']; ?>"><?php echo $subCategory['subcategory_name']; ?></a>
+            <?php if ($subCategory['private']) { ?>
+                <?php if (isset($member['admin']) || isset($member['moderator']) || isset($member['private_member'])) { ?>
+                    <div class="category__options">
+                        <!-- Category Option Start -->
+                        <div class="category__option">
+                            <i class="ri-corner-down-right-line"></i>
+                            <div>
+                                <a href="<?php echo $baseUrl ?>/subcategory.php?subcategory_id=<?php echo $subCategory['id']; ?>"><?php echo $subCategory['subcategory_name']; ?></a>
+                                <strong>PRIVATE</strong>
+                            </div>
+                        </div>
+                        <!-- Category Option End -->
+                    </div>
+                <?php } ?>
+            <?php } else { ?>
+                <div class="category__options">
+                    <!-- Category Option Start -->
+                    <div class="category__option">
+                        <i class="ri-corner-down-right-line"></i>
+                        <a href="<?php echo $baseUrl ?>/subcategory.php?subcategory_id=<?php echo $subCategory['id']; ?>"><?php echo $subCategory['subcategory_name']; ?></a>
+                    </div>
+                    <!-- Category Option End -->
                 </div>
-                <!-- Category Option End -->
-            </div>
+            <?php } ?>
         <?php } ?>
         <!-- Category Options End -->
     </div>

@@ -12,6 +12,9 @@ if (isset($_POST['register'])) {
     $password = trim($_POST['password']);
     $repeatPassword = trim($_POST['repeat-password']);
     $tac = isset($_POST['tac']) ? 1 : 0;
+    $admin = 0;
+    $moderator = 0;
+    $privateMember = 0;
     // Get and Sanatize Form Data End
 
     // Sanatize and Validate Email Start
@@ -46,11 +49,11 @@ if (isset($_POST['register'])) {
         // Escaping Special Characters For SQL Ends
 
         // Preparing SQL Statement Start
-        $stmt = $conn->prepare("INSERT INTO gu_members (username, email, password, tac) VALUES (?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO gu_members (username, email, password, tac, admin, moderator, private_member) VALUES (?, ?, ?, ?, ?, ?, ?)");
         // Preparing SQL Statement End
 
         // Binding Parameters Start
-        $stmt->bind_param("sssi", $username, $email, $hashed_password, $tac);
+        $stmt->bind_param("sssiiii", $username, $email, $hashed_password, $tac, $admin, $moderator, $privateMember);
         // Binding Parameters End
 
         // Executing Statement Start

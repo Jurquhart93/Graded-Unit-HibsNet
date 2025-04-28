@@ -42,42 +42,49 @@
             <?php include(__DIR__ . "/../components/logo.php"); ?>
             <!-- Logo End -->
 
-            <!-- Main Links Start -->
-            <ul>
-                <li>
-                    <a href="<?php echo $baseUrl; ?>/index.php">Home</a>
-                </li>
-                <li class="middot">
-                    &sdot;
-                </li>
-                <li>
-                    <a href="<?php echo $baseUrl; ?>/forum.php">Forum</a>
-                </li>
-                <li class="middot">
-                    &sdot;
-                </li>
-                <li>
-                    <a href="<?php echo $baseUrl; ?>/forum.php">Forum</a>
-                </li>
-            </ul>
-            <!-- Main Links End -->
+            <!-- Hamburget Menu Start -->
+            <div class="hamburger">
+                <i class="ri-menu-line" id="hamburger-icon"></i>
+            </div>
+            <!-- Hamburget Menu End -->
 
-            <!-- Login/ Register Links Start -->
-            <ul>
-                <?php if (isset($_SESSION['user'])) { ?>
+            <div class="nav__links">
+                <!-- Main Links Start -->
+                <ul>
                     <li>
-                        <a href="<?php echo $baseUrl; ?>/logout.php">Logout</a>
+                        <a href="<?php echo $baseUrl; ?>/index.php">Home</a>
                     </li>
-                <?php } else { ?>
                     <li>
-                        <a href="<?php echo $baseUrl; ?>/login.php">Login</a>
+                        <a href="<?php echo $baseUrl; ?>/forum.php">Forum</a>
                     </li>
-                    <li class="register">
-                        <a href="<?php echo $baseUrl; ?>/register.php">Register</a>
-                    </li>
-                <?php } ?>
-            </ul>
-            <!-- Login/ Register Links End -->
+                    <?php if (isset($_SESSION['user']) && $member['admin'] || isset($_SESSION['user']) && $member['moderator']) { ?>
+                        <li>
+                            <a href="<?php echo $baseUrl; ?>/admin/">Admin Panel</a>
+                        </li>
+                    <?php } ?>
+                </ul>
+                <!-- Main Links End -->
+
+                <!-- Login/ Register Links Start -->
+                <ul>
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <li>
+                            <a href="<?php echo $baseUrl; ?>/profile.php?id=<?php echo $member['id']; ?>">Profile</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $baseUrl; ?>/logout.php">Logout</a>
+                        </li>
+                    <?php } else { ?>
+                        <li>
+                            <a href="<?php echo $baseUrl; ?>/login.php">Login</a>
+                        </li>
+                        <li class="register">
+                            <a href="<?php echo $baseUrl; ?>/register.php">Register</a>
+                        </li>
+                    <?php } ?>
+                </ul>
+                <!-- Login/ Register Links End -->
+            </div>
         </nav>
     </header>
     <!-- Navigation End -->
